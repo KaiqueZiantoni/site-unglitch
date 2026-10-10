@@ -4,12 +4,12 @@ import Faq from "./Faq";
 import Revelar from "./Revelar";
 import SoulUpMarca from "./SoulUpMarca";
 
-const cartao = "rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm";
+const cartao = "border border-borda bg-superficie";
 
 function Titulo({ children }: { children: string }) {
   return (
-    <h3 className="soul-titulo text-2xl text-white md:text-[2rem]">
-      <span className="mb-3 block h-1 w-10 rounded-full bg-gradient-to-r from-soul-ciano to-soul-azul" aria-hidden="true" />
+    <h3 className="text-2xl md:text-3xl">
+      <span className="soul-linha mb-3 block h-px w-10" aria-hidden="true" />
       {children}
     </h3>
   );
@@ -19,7 +19,7 @@ function Titulo({ children }: { children: string }) {
 function TituloPrincipal() {
   const [antes, depois] = soulmove.slogan.split(soulmove.sloganDestaque);
   return (
-    <h2 id="soulmove-titulo" className="soul-titulo mt-6 max-w-3xl text-4xl leading-[1.02] md:text-6xl lg:text-7xl">
+    <h2 id="soulmove-titulo" className="mt-6 max-w-3xl text-4xl leading-[1.05] md:text-6xl">
       {antes}
       <span className="soul-destaque">{soulmove.sloganDestaque}</span>
       {depois}
@@ -32,23 +32,24 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
   const etapa = etapas[etapaAtiva];
 
   return (
-    <article className="soul-fundo border-t border-borda text-white" aria-labelledby="soulmove-titulo">
+    <article className="soul-fundo border-t border-borda" aria-labelledby="soulmove-titulo">
+      <div className="soul-linha h-px w-full" aria-hidden="true" />
       <div className="px-5 py-12 md:px-9 md:py-16">
         {/* Cabeçalho: numeração do site + marca do parceiro */}
         <Revelar>
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-white/60">
-              <span className="text-white">03</span> / Estudo de caso
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-borda pb-6">
+            <p className="font-mono text-xs uppercase tracking-widest text-texto-suave">
+              <span className="text-texto">03</span> / Estudo de caso
             </p>
             <div className="flex items-center gap-6">
-              <p className="flex items-center gap-3 text-sm text-white/60">
+              <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-texto-suave">
                 Em parceria com
                 <SoulUpMarca />
               </p>
               <button
                 type="button"
                 onClick={aoFechar}
-                className="rounded-full border border-white/20 px-4 py-1.5 text-xs font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                className="font-mono text-xs uppercase tracking-widest text-texto-suave transition-colors hover:text-texto"
               >
                 Fechar ×
               </button>
@@ -57,23 +58,14 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
 
           <div className="mt-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-soul-amarelo px-3.5 py-1.5 text-xs font-bold text-soul-navy">
-                  Finalista FIAP NEXT 2026
-                </span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/80">
-                  Challenge FIAP · 1º semestre 2026
-                </span>
+              <div className="flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+                <span className="rounded-full bg-soul-amarelo px-3 py-1 text-fundo">Finalista FIAP NEXT 2026</span>
+                <span className="rounded-full border border-borda px-3 py-1 text-texto-suave">Challenge FIAP · 1º sem. 2026</span>
               </div>
               <TituloPrincipal />
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70">{soulmove.contexto}</p>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-texto-suave">{soulmove.contexto}</p>
             </div>
-            <img
-              src="/img/soulmove-logo.jpeg"
-              alt="Logo SoulMove"
-              className="h-16 w-auto rounded-xl md:h-20"
-              loading="lazy"
-            />
+            <img src="/img/soulmove-logo.jpeg" alt="Logo SoulMove" className="h-14 w-auto rounded-lg md:h-16" loading="lazy" />
           </div>
         </Revelar>
 
@@ -82,8 +74,8 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
           <dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {soulmove.metricas.map((m) => (
               <div key={m.rotulo} className={`${cartao} p-5 md:p-6`}>
-                <dd className="soul-titulo text-4xl text-soul-amarelo md:text-5xl">{m.valor}</dd>
-                <dt className="mt-2 text-sm text-white/70">{m.rotulo}</dt>
+                <dd className="text-4xl md:text-5xl">{m.valor}</dd>
+                <dt className="mt-2 font-mono text-[11px] uppercase tracking-widest text-texto-suave">{m.rotulo}</dt>
               </div>
             ))}
           </dl>
@@ -93,9 +85,9 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
         <div className="mt-6 grid gap-3 md:grid-cols-2">
           <Revelar className="h-full">
             <div className={`${cartao} h-full p-7 md:p-9`}>
-              <p className="text-xs font-semibold uppercase tracking-widest text-soul-rosa">O problema</p>
-              <Titulo>O desafio</Titulo>
-              <div className="mt-4 space-y-4 leading-relaxed text-white/75">
+              <p className="font-mono text-xs uppercase tracking-widest text-soul-rosa">O problema</p>
+              <h3 className="mt-2 text-2xl md:text-3xl">O desafio</h3>
+              <div className="mt-4 space-y-4 leading-relaxed text-texto-suave">
                 {soulmove.desafio.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
@@ -103,10 +95,10 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
             </div>
           </Revelar>
           <Revelar atraso={80} className="h-full">
-            <div className="h-full rounded-2xl border border-soul-azul/50 bg-soul-azul/15 p-7 md:p-9">
-              <p className="text-xs font-semibold uppercase tracking-widest text-soul-ciano">A proposta</p>
-              <Titulo>A solução</Titulo>
-              <div className="mt-4 space-y-4 leading-relaxed text-white/80">
+            <div className={`${cartao} h-full border-l-2 border-l-soul-azul p-7 md:p-9`}>
+              <p className="font-mono text-xs uppercase tracking-widest text-soul-azul-claro">A proposta</p>
+              <h3 className="mt-2 text-2xl md:text-3xl">A solução</h3>
+              <div className="mt-4 space-y-4 leading-relaxed text-texto-suave">
                 {soulmove.solucao.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
@@ -115,14 +107,11 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
           </Revelar>
         </div>
 
-        {/* Como funciona: pílulas no estilo das abas do site da SoulUP */}
+        {/* Como funciona */}
         <Revelar className="mt-20">
-          <div className="text-center [&_h3>span]:mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-widest text-soul-azul-claro">Jornada do usuário</p>
-            <Titulo>Como funciona</Titulo>
-            <p className="mt-2 text-white/60">Da jornada ao reconhecimento, em cinco etapas.</p>
-          </div>
-          <div className="mt-8 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] md:justify-center" role="tablist" aria-label="Etapas">
+          <Titulo>Como funciona</Titulo>
+          <p className="mt-3 text-texto-suave">Da jornada ao reconhecimento, em cinco etapas.</p>
+          <div className="mt-8 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]" role="tablist" aria-label="Etapas">
             {etapas.map((e, i) => {
               const ativa = i === etapaAtiva;
               return (
@@ -132,8 +121,8 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
                   role="tab"
                   aria-selected={ativa}
                   onClick={() => setEtapaAtiva(i)}
-                  className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    ativa ? "bg-soul-azul text-white" : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                  className={`shrink-0 rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${
+                    ativa ? "border-soul-azul bg-soul-azul text-white" : "border-borda text-texto-suave hover:border-texto-suave hover:text-texto"
                   }`}
                 >
                   {e.titulo}
@@ -141,16 +130,16 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
               );
             })}
           </div>
-          <div className={`${cartao} mt-6 grid gap-8 p-8 md:grid-cols-[auto_1fr] md:items-center md:gap-12 md:p-12`} aria-live="polite">
-            <span className="flex h-20 w-20 items-center justify-center rounded-full bg-soul-amarelo text-3xl font-bold text-soul-navy md:h-28 md:w-28 md:text-5xl" aria-hidden="true">
-              {etapaAtiva + 1}
+          <div className={`${cartao} mt-4 grid gap-6 p-7 md:grid-cols-[auto_1fr] md:items-start md:gap-10 md:p-10`} aria-live="polite">
+            <span className="font-mono text-5xl text-soul-amarelo md:text-6xl" aria-hidden="true">
+              0{etapaAtiva + 1}
             </span>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/50">
+              <p className="font-mono text-xs uppercase tracking-widest text-texto-suave">
                 Etapa {etapaAtiva + 1} de {etapas.length}
               </p>
-              <h4 className="soul-titulo mt-2 text-3xl md:text-4xl">{etapa.titulo}</h4>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/75">{etapa.descricao}</p>
+              <h4 className="mt-2 text-3xl md:text-4xl">{etapa.titulo}</h4>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-texto-suave">{etapa.descricao}</p>
             </div>
           </div>
         </Revelar>
@@ -164,11 +153,11 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
             <li key={d.titulo}>
               <Revelar atraso={i * 60} className="h-full">
                 <article className={`${cartao} h-full p-6`}>
-                  <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-soul-rosa px-2 text-xs font-bold text-white" aria-hidden="true">
+                  <span className="font-mono text-xs text-soul-rosa" aria-hidden="true">
                     0{i + 1}
                   </span>
-                  <h4 className="soul-titulo mt-4 text-lg">{d.titulo}</h4>
-                  <p className="mt-2 leading-relaxed text-white/70">{d.descricao}</p>
+                  <h4 className="mt-3 text-lg">{d.titulo}</h4>
+                  <p className="mt-2 leading-relaxed text-texto-suave">{d.descricao}</p>
                 </article>
               </Revelar>
             </li>
@@ -185,19 +174,19 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
                 className="w-full"
                 loading="lazy"
               />
-              <figcaption className="border-t border-white/10 p-6 leading-relaxed text-white/70">
-                <strong className="text-white">Arquitetura.</strong> {soulmove.arquitetura}
+              <figcaption className="border-t border-borda p-6 leading-relaxed text-texto-suave">
+                <strong className="text-texto">Arquitetura.</strong> {soulmove.arquitetura}
               </figcaption>
             </figure>
           </Revelar>
           <Revelar atraso={80}>
             <div className={`${cartao} h-full p-7`}>
-              <Titulo>Tecnologia</Titulo>
-              <dl className="mt-5 divide-y divide-white/10">
+              <h3 className="text-2xl md:text-3xl">Tecnologia</h3>
+              <dl className="mt-5 divide-y divide-borda">
                 {tecnologias.map((t) => (
-                  <div key={t.camada} className="flex flex-col gap-0.5 py-3 sm:flex-row sm:justify-between sm:gap-4">
-                    <dt className="text-sm text-white/55">{t.camada}</dt>
-                    <dd className="font-medium sm:text-right">{t.stack}</dd>
+                  <div key={t.camada} className="grid gap-1 py-3 sm:grid-cols-[150px_1fr] sm:gap-4">
+                    <dt className="font-mono text-xs uppercase tracking-widest text-texto-suave">{t.camada}</dt>
+                    <dd>{t.stack}</dd>
                   </div>
                 ))}
               </dl>
@@ -205,16 +194,15 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
           </Revelar>
         </div>
 
-        {/* Próximos passos: gradiente azul → violeta da SoulUP */}
+        {/* Próximos passos */}
         <Revelar className="mt-20">
-          <div className="soul-gradiente rounded-2xl p-8 md:p-12">
-            <Titulo>Próximos passos</Titulo>
+          <div className={`${cartao} relative overflow-hidden p-7 md:p-10`}>
+            <span className="soul-linha absolute inset-x-0 top-0 h-px" aria-hidden="true" />
+            <h3 className="text-2xl md:text-3xl">Próximos passos</h3>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {soulmove.proximosPassos.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-white/90">
-                  <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-soul-amarelo" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12l5 5L20 7" />
-                  </svg>
+              {soulmove.proximosPassos.map((p, i) => (
+                <li key={p} className="flex items-start gap-3 text-texto-suave">
+                  <span className="font-mono text-xs leading-6 text-soul-azul-claro">0{i + 1}</span>
                   {p}
                 </li>
               ))}
@@ -225,7 +213,7 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
         {/* FAQ */}
         <Revelar className="mt-20">
           <Titulo>Perguntas frequentes</Titulo>
-          <p className="mt-3 max-w-2xl text-white/60">As dúvidas mais comuns sobre a solução, respondidas de forma direta.</p>
+          <p className="mt-3 max-w-2xl text-texto-suave">As dúvidas mais comuns sobre a solução, respondidas de forma direta.</p>
           <div className="mt-8">
             <Faq />
           </div>
@@ -234,13 +222,12 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
             <button
               type="button"
               onClick={aoFechar}
-              className="rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-soul-navy transition-opacity hover:opacity-85"
+              className="border border-borda px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors hover:border-texto"
             >
-              Fechar estudo de caso
+              Fechar estudo de caso ↑
             </button>
-            <p className="text-center text-xs text-white/45">
+            <p className="text-center text-xs text-texto-suave/70">
               SoulMove é um projeto acadêmico desenvolvido pela Un-Glitch no Challenge FIAP, em parceria com a SoulUP.
-              Identidade visual da SoulUP utilizada com referência ao parceiro.
             </p>
           </div>
         </Revelar>

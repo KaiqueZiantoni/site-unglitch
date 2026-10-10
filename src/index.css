@@ -20,15 +20,9 @@
   --color-soul-amarelo: #ffbf36;
   --color-soul-rosa: #e42a8e;
   --color-soul-ciano: #66ddff;
-  --font-soul: "Plus Jakarta Sans", "Inter", sans-serif;
 }
 
-/* Títulos do estudo de caso: fonte geométrica e destaque em gradiente */
-.soul-titulo {
-  font-family: var(--font-soul);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
+/* Destaque em gradiente no título do estudo de caso */
 .soul-destaque {
   background: linear-gradient(90deg, #66ddff 0%, #6b93ff 50%, #c084fc 100%);
   -webkit-background-clip: text;
@@ -36,14 +30,15 @@
   color: transparent;
 }
 
-/* Fundo do estudo de caso SoulMove: gradiente navy → violeta, como no site da SoulUP */
+/* Fundo do estudo de caso SoulMove: tom violeta discreto sobre o fundo do site */
 .soul-fundo {
   background:
-    radial-gradient(60% 40% at 85% 0%, rgb(96 47 230 / 0.35), transparent 70%),
-    linear-gradient(180deg, #0a0b0f 0%, #16173a 30%, #1b1e59 70%, #251a5e 100%);
+    radial-gradient(50% 35% at 90% 0%, rgb(96 47 230 / 0.14), transparent 70%),
+    linear-gradient(180deg, #0a0b0f 0%, #0e0f1c 100%);
 }
-.soul-gradiente {
-  background: linear-gradient(135deg, #277cc7 0%, #602fe6 100%);
+/* Linha fina com o gradiente azul → violeta da SoulUP */
+.soul-linha {
+  background: linear-gradient(90deg, #66ddff 0%, #5360ff 50%, #602fe6 100%);
 }
 
 html {
