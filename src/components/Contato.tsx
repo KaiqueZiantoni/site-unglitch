@@ -9,7 +9,7 @@ export default function Contato() {
         <Revelar>
           <div className="grid gap-6 md:grid-cols-[200px_1fr]">
             <p className="font-mono text-xs uppercase tracking-widest text-texto-suave">
-              <span className="text-texto">04</span> / Contato
+              <span className="text-texto">03</span> / Contato
             </p>
             <div>
               <h2 id="contato-titulo" className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">

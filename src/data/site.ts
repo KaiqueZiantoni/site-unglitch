@@ -13,6 +13,5 @@ export const linksMenu = [
   { rotulo: "Início", ancora: "inicio" },
   { rotulo: "Quem somos", ancora: "quem-somos" },
   { rotulo: "Projetos", ancora: "projetos" },
-  { rotulo: "Equipe", ancora: "equipe" },
   { rotulo: "Contato", ancora: "contato" },
 ] as const;

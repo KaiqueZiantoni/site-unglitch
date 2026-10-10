@@ -2,7 +2,6 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import QuemSomos from "./components/QuemSomos";
 import Projetos from "./components/Projetos";
-import Equipe from "./components/Equipe";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 
@@ -20,7 +19,6 @@ export default function App() {
         <Hero />
         <QuemSomos />
         <Projetos />
-        <Equipe />
         <Contato />
       </main>
       <Footer />

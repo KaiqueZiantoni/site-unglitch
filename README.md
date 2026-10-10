@@ -10,16 +10,15 @@ quem escaneia vê a história do projeto, o estudo de caso e conhece as pessoas 
 
 | Âncora        | Conteúdo                                                                 |
 |---------------|--------------------------------------------------------------------------|
-| `#inicio`     | Apresentação do time e números principais                                |
-| `#quem-somos` | Frentes de atuação (back-end, dados/infra, front-end, design/comercial)  |
+| `#inicio`     | Hero em tela cheia com o logo em 3D (three.js): segue o mouse e, ao clicar e segurar, se desmonta em glitch |
+| `#quem-somos` | Números, frentes de atuação e os desenvolvedores, com GitHub e LinkedIn  |
 | `#projetos`   | Portfólio: um card por projeto, com espaço reservado para os próximos    |
 | `#soulmove`   | Estudo de caso completo e FAQ, com a identidade visual da SoulUP. Expande dentro do card do SoulMove ao clicar |
-| `#equipe`     | Integrantes com GitHub e LinkedIn                                        |
 | `#contato`    | Chamada para contato                                                     |
 
 ## Stack
 
-React 18 · TypeScript · Vite 6 · TailwindCSS 4. Sem dependências de runtime além do React.
+React 18 · TypeScript · Vite 6 · TailwindCSS 4 · three.js (carregado sob demanda só no hero; sem WebGL, cai no logo em SVG).
 
 ## Rodando
 
