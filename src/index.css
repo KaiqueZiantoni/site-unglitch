@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* Identidade visual Un-Glitch: derivada do logo (off-white, vermelho e azul sobre preto) */
+@theme {
+  --color-fundo: #0a0b0f;
+  --color-superficie: #0f1116;
+  --color-borda: #22252d;
+  --color-texto: #f2efe6;
+  --color-texto-suave: #8d919c;
+  --color-vermelho: #ff3b1f;
+  --color-azul: #3b5bff;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Bricolage Grotesque", "Inter", sans-serif;
+
+  /* Paleta da SoulUP (usada apenas no estudo de caso do SoulMove, projeto em parceria) */
+  --color-soul-navy: #0f172a;
+  --color-soul-azul: #5360ff;
+  --color-soul-azul-claro: #6b93ff;
+  --color-soul-amarelo: #ffbf36;
+  --color-soul-rosa: #e42a8e;
+  --color-soul-ciano: #66ddff;
+  --font-soul: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+/* Títulos do estudo de caso: fonte geométrica e destaque em gradiente */
+.soul-titulo {
+  font-family: var(--font-soul);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.soul-destaque {
+  background: linear-gradient(90deg, #66ddff 0%, #6b93ff 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fundo do estudo de caso SoulMove: gradiente navy → violeta, como no site da SoulUP */
+.soul-fundo {
+  background:
+    radial-gradient(60% 40% at 85% 0%, rgb(96 47 230 / 0.35), transparent 70%),
+    linear-gradient(180deg, #0a0b0f 0%, #16173a 30%, #1b1e59 70%, #251a5e 100%);
+}
+.soul-gradiente {
+  background: linear-gradient(135deg, #277cc7 0%, #602fe6 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3.5rem;
+}
+
+body {
+  background-color: var(--color-fundo);
+  color: var(--color-texto);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos do site: fonte de display, distinta do texto corrido */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}
+h1 { font-weight: 700 }
+
+::selection {
+  background: var(--color-texto);
+  color: var(--color-fundo);
+}
+
+/* Revelação ao rolar: discreta */
+.revelar {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* Aberração cromática (mesmo recurso do logo) em texto, ao passar o mouse */
+.aberracao {
+  transition: text-shadow 0.2s ease;
+}
+.aberracao:hover {
+  text-shadow: -3px 0 var(--color-vermelho), 3px 0 var(--color-azul);
+}
+
+/* Fotos em preto e branco que ganham cor ao passar o mouse */
+.foto-pb {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+.group:hover .foto-pb {
+  filter: none;
+}
+
+/* Cantos marcados: moldura técnica usada em cards, fotos e no logo */
+.cantos { position: relative }
+.canto {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--color-texto);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+}
+.canto-tl { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px }
+.canto-tr { top: -1px; right: -1px; border-top-width: 1px; border-right-width: 1px }
+.canto-bl { bottom: -1px; left: -1px; border-bottom-width: 1px; border-left-width: 1px }
+.canto-br { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px }
+
+/* Grade pontilhada de fundo para áreas vazias */
+.grade-pontos {
+  background-image: radial-gradient(rgb(242 239 230 / 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Cursor de terminal piscando */
+.cursor::after {
+  content: "_";
+  animation: piscar 1s steps(2) infinite;
+}
+@keyframes piscar { 50% { opacity: 0 } }
+
+/* Painel expansível: anima a altura via grid-template-rows, sem medir conteúdo */
+.expansivel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.expansivel.aberto {
+  grid-template-rows: 1fr;
+}
+.expansivel > .expansivel-caixa {
+  overflow: hidden;
+  min-height: 0;
+}
+.expansivel-conteudo {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.4s ease, visibility 0s linear 0.65s;
+}
+.expansivel.aberto .expansivel-conteudo {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease 0.2s, transform 0.55s ease 0.2s, visibility 0s;
+}
+
+/* Sinal de status pulsando */
+.sinal {
+  animation: pulsar 1.6s ease-in-out infinite;
+}
+@keyframes pulsar { 50% { opacity: 0.25 } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor::after, .sinal { animation: none }
+  .expansivel, .expansivel-conteudo { transition: none }
+  html { scroll-behavior: auto }
+  .revelar { opacity: 1; transform: none; transition: none }
+}
