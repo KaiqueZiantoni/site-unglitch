@@ -6,7 +6,7 @@ export const site = {
   /** Preencha com o e-mail oficial do time para exibir o botão de e-mail no contato. */
   email: "",
   /** Preencha com a URL da organização no GitHub, se existir. */
-  githubOrg: "",
+  githubOrg: "https://github.com/Un-Glitch-Tech",
 } as const;
 
 export const linksMenu = [

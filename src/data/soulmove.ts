@@ -2,6 +2,7 @@ import type { Diferencial, Etapa, Tecnologia } from "../types";
 
 export const soulmove = {
   nome: "SoulMove",
+  demoUrl: "https://soulmove.un-glitch.com.br/",
   slogan: "Reconhecimento para quem já escolhe o transporte sustentável.",
   /** Trecho do slogan que recebe o destaque em gradiente no título */
   sloganDestaque: "transporte sustentável",
