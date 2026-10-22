@@ -10,7 +10,7 @@ export const equipe: Integrante[] = [
     id: 1,
     nome: "Allyson Victor",
     papel: "Desenvolvedor",
-    foto: "/img/ally.jpg",
+    foto: "/img/allyson.jpg",
     github: "https://github.com/Ally7574",
     linkedin: "https://www.linkedin.com/in/allyson-victor-0804a9313/",
   },
