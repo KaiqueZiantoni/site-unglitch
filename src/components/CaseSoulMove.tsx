@@ -64,6 +64,15 @@ export default function CaseSoulMove({ aoFechar }: { aoFechar: () => void }) {
               </div>
               <TituloPrincipal />
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-texto-suave">{soulmove.contexto}</p>
+              <a
+                href={soulmove.demoUrl}
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-soul-amarelo px-6 py-3 text-sm font-semibold text-fundo transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-soul-amarelo"
+              >
+                Experimentar o SoulMove →
+              </a>
+              <p className="mt-3 text-sm text-texto-suave">
+                Acesse nossa demonstração acadêmica.
+              </p>
             </div>
             <img src="/img/soulmove-logo.jpeg" alt="Logo SoulMove" className="h-14 w-auto rounded-lg md:h-16" loading="lazy" />
           </div>
